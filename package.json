@@ -1,7 +1,7 @@
 {
   "name": "make-random",
   "version": "0.1.0",
-  "description": " ",
+  "description": "💯 Make a random number",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -10,10 +10,22 @@
     "type": "git",
     "url": "https://github.com/johnfoderaro/make-random"
   },
-  "keywords": [ ],
+  "keywords": [
+    "generate random number",
+    "random number generator",
+    "get random number",
+    "make random number",
+    "random number",
+    "random negative number",
+    "generate negative numbers",
+    "random",
+    "numbers",
+    "number",
+    "no negative zero"
+  ],
   "author": "John Foderaro <johnfoderaro@icloud.com>",
   "license": "MIT",
-  "readmeFilename": "README.md",
+  "readmeFilename": "readme.md",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.0.2"
