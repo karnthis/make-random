@@ -16,7 +16,12 @@ const makeRandom = {
     if (typeof max !== 'number') {
       throw new TypeError(`'Max' argument must be a number.`);
     }
-    return Math.floor(Math.random() * max);
+    const value = Math.floor(Math.random() * max);
+    if (value === -0) {
+      return negativeZeroHelper(value);
+    } else {
+      return value;
+    }
   }
 };
 
