@@ -1,6 +1,6 @@
 # Make Random
 
-A lightweight Node.js module to help with generating a random number between either 1 or 0 and your specified "maximum". This module comes in handy for easily generating a random number for tasks such as dealing with arrays (zero based index) or pagination (one based index).
+A lightweight Node.js module to help with generating a random number between either 1 or 0 and your specified "maximum" value. This module comes in handy for easily generating a random number for tasks such as dealing with arrays (zero based index) or pagination (one based index).
 
 ## Getting started
 ```shell
@@ -10,31 +10,31 @@ npm install make-random
 ## Examples
 
 ```javascript
-const makeChange = require('make-change');
+const makeRandom = require('make-random');
 
-makeChange.ceil(200);
+makeRandom.ceil(200);
 // returns a random number between 1 and 200
 
-makeChange.floor(10);
+makeRandom.floor(10);
 // returns a random number between 0 and 10
 
-makeChange.ceil(-42);
+makeRandom.ceil(-42);
 // returns random number between 0 and -42
 
-makeChange.floor(-10);
+makeRandom.floor(-10);
 // returns a random number between 1 and -10
 
-makeChange.floor(-0);
+makeRandom.floor(-0);
 // returns 0
 ```
 
 ## Usage
 
-### `makeChange.ceil(number);`
+### `makeRandom.ceil(number);`
 
 The `ceil()` method accepts only a number as its single argument -- the maximum value for the range the random number is generated against. If the argument is a positive number, the method returns a number between 1 and your maximum value. If the number is negative, this method returns a value between the maximum negative value and 0. Please note, "-0" gets "normalized" to 0 in this module.
 
-### `makeChange.floor(number);`
+### `makeRandom.floor(number);`
 
 The `floor()` method accepts only a number as its single argument -- the maximum value for the range the random number is generated against. If the argument is a positive number, the method returns a number between 0 and your maximum value. If the number is negative, this method returns a value between the maximum negative value and 1.
 
