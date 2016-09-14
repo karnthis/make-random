@@ -1,0 +1,21 @@
+{
+  "name": "make-random",
+  "version": "0.1.0",
+  "description": " ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnfoderaro/make-random"
+  },
+  "keywords": [ ],
+  "author": "John Foderaro <johnfoderaro@icloud.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
+}
