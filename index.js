@@ -3,7 +3,7 @@
 const makeRandom = {
   ceil(max) {
     if (typeof max !== 'number') {
-      throw new Error('Max parameter must be a number.');
+      throw new TypeError(`'Max' argument must be a number.`);
     }
     const value = Math.ceil(Math.random() * max);
     if (value === -0) {
@@ -14,7 +14,7 @@ const makeRandom = {
   },
   floor(max) {
     if (typeof max !== 'number') {
-      throw new Error('Max parameter must be a number.');
+      throw new TypeError(`'Max' argument must be a number.`);
     }
     return Math.floor(Math.random() * max);
   }
