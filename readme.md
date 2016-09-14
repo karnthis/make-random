@@ -1,5 +1,7 @@
 # Make Random
 
+[![Build Status](https://travis-ci.org/johnfoderaro/make-random.svg?branch=master)](https://travis-ci.org/johnfoderaro/make-random)
+
 A lightweight Node.js module to help with generating a random number between either 1 or 0 and your specified "maximum" value. This module comes in handy for easily generating a random number for tasks such as dealing with arrays (zero based index) or pagination (one based index).
 
 ## Getting started
