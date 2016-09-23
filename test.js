@@ -18,21 +18,17 @@ describe('makeRandom', () => {
     expect(makeRandom.floor(-0)).to.equal(0);
   });
   it(`should throw an error if a number is not passed`, () => {
-    expect(() => {
-      makeRandom.ceil('test');
-      makeRandom.floor('test');
-    }).to.throw(Error);
-    expect(() => {
-      makeRandom.ceil('10');
-      makeRandom.floor('10');
-    }).to.throw(Error);
-    expect(() => {
-      makeRandom.ceil(true);
-      makeRandom.floor(true);
-    }).to.throw(Error);
-    expect(() => {
-      makeRandom.ceil({});
-      makeRandom.floor({});
-    }).to.throw(Error);
+    expect(makeRandom.ceil('test')).to.be.an('error');
+    expect(makeRandom.ceil('10')).to.be.an('error');
+    expect(makeRandom.ceil(true)).to.be.an('error');
+    expect(makeRandom.ceil({})).to.be.an('error');
+    expect(makeRandom.ceil([])).to.be.an('error');
+    expect(makeRandom.ceil(() => {})).to.be.an('error');
+    expect(makeRandom.floor('test')).to.be.an('error');
+    expect(makeRandom.floor('10')).to.be.an('error');
+    expect(makeRandom.floor(true)).to.be.an('error');
+    expect(makeRandom.floor({})).to.be.an('error');
+    expect(makeRandom.floor([])).to.be.an('error');
+    expect(makeRandom.floor(() => {})).to.be.an('error');
   });
 });
