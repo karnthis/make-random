@@ -17,7 +17,7 @@ describe('makeRandom', () => {
     expect(makeRandom.ceil(-0)).to.equal(0);
     expect(makeRandom.floor(-0)).to.equal(0);
   });
-  it(`should throw an error if a number is not passed`, () => {
+  it(`should return an error if a number is not passed`, () => {
     expect(makeRandom.ceil('test')).to.be.an('error');
     expect(makeRandom.ceil('10')).to.be.an('error');
     expect(makeRandom.ceil(true)).to.be.an('error');

@@ -1,6 +1,6 @@
 {
   "name": "make-random",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "💯 Make a random number",
   "main": "index.js",
   "scripts": {
