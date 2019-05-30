@@ -1,32 +1,24 @@
 'use strict';
 
+const Purify = require('purify-int')
+const Crypto = require('crypto')
+
 const makeRandom = {
-  ceil(max) {
-    if (typeof max !== 'number') {
-      return new TypeError(`'Max' argument must be a number.`);
-    }
-    const value = Math.ceil(Math.random() * max);
-    if (value === -0) {
-      return negativeZeroHelper(value);
-    } else {
-      return value;
-    }
-  },
-  floor(max) {
-    if (typeof max !== 'number') {
-      return new TypeError(`'Max' argument must be a number.`);
-    }
-    const value = Math.floor(Math.random() * max);
-    if (value === -0) {
-      return negativeZeroHelper(value);
-    } else {
-      return value;
-    }
-  }
+	ceil(max) {
+		const safeMax = Purify.asInt(max);
+		deprecate("make-random.ceil()", "0.1.6");
+		return Math.ceil(Math.random() * safeMax);
+	},
+	floor(max) {
+		const safeMax = Purify.asInt(max);
+		deprecate("make-random.floor()", "0.1.6");
+		return Math.floor(Math.random() * safeMax);
+	}
 };
 
-function negativeZeroHelper(number) {
-  return parseInt(number.toString());
+function deprecate(func, version) {
+	console.log(`${func} is deprecated as of ${version} and may be removed at any time.
+	Please convert to make-random-legacy if this function is still needed.`)
 }
 
 module.exports = makeRandom;
