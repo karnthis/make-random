@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnfoderaro/make-random"
+    "url": "https://github.com/karnthis/make-random"
   },
   "keywords": [
     "generate random number",
@@ -23,7 +23,7 @@
     "number",
     "no negative zero"
   ],
-  "author": "John Foderaro <johnfoderaro@icloud.com>",
+  "author": "Erin Rivas <contact@atomicbear.com>",
   "license": "MIT",
   "readmeFilename": "readme.md",
   "devDependencies": {
