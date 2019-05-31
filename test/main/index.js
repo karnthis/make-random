@@ -1,46 +1,25 @@
 'use strict';
 
-const chai = require('chai');
-const expect = chai.expect;
-const { ceil, floor } = require('../../index');
+const expect = require('chai').expect;
+const { fixedRange, flexRange } = require('../../libs');
 
-describe('makeRandom ceil()', () => {
-  it(`should have the method 'ceil'`, ()=> {
-    expect(ceil).to.be.a('function');
-  });
-  it(`should return a number`, () => {
-    expect(ceil(10)).to.be.a('number');
-    expect(ceil('10')).to.be.an('number');
-  });
-  it(`should not return a negative zero`, () => {
-    expect(ceil(-0)).to.equal(0);
-  });
-	
-	it(`should return 0 if a number or number string is not passed to ceil()`, () => {
-    expect(ceil('test')).to.equal(0);
-    expect(ceil(true)).to.equal(0);
-    expect(ceil({})).to.equal(0);
-    expect(ceil([])).to.equal(0);
-    expect(ceil(() => {})).to.equal(0);
-  });
-});
-
-describe('makeRandom floor()', () => {
-  it(`should have the method 'floor'`, ()=> {
-    expect(floor).to.be.a('function');
-  });
-  it(`should return a number`, () => {
-    expect(floor(10)).to.be.a('number');
-    expect(floor('10')).to.be.an('number');
-  });
-  it(`should not return a negative zero`, () => {
-    expect(floor(-0)).to.equal(0);
-  });
-  it(`should return 0 if a number or number string is not passed to ceil()`, () => {
-    expect(floor('test')).to.equal(0);
-    expect(floor(true)).to.equal(0);
-    expect(floor({})).to.equal(0);
-    expect(floor([])).to.equal(0);
-    expect(floor(() => {})).to.equal(0);
+describe('makeRandom flexRange()', () => {
+	it(`should have the method 'flexRange'`, ()=> {
+		expect(flexRange).to.be.a('function');
 	});
+	it(`should return a positive random number`, () => {
+		expect(flexRange(10)).to.be.a('number').and.be.greaterThan(-1);
+		expect(flexRange('10')).to.be.an('number').and.be.greaterThan(-1);
+	});
+	it(`should return a negative random number`, () => {
+		expect(flexRange(-10)).to.be.a('number').and.be.lessThan(0);
+		expect(flexRange('-10')).to.be.an('number').and.be.lessThan(0);
+	});
+	// it(`should return 0 if a number or number string is not passed to range()`, () => {
+	// 	expect(flexRange('test')).to.equal(0);
+	// 	expect(flexRange(true)).to.equal(0);
+	// 	expect(flexRange({})).to.equal(0);
+	// 	expect(flexRange([])).to.equal(0);
+	// 	expect(flexRange(() => {})).to.equal(0);
+	// });
 });

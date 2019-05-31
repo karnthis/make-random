@@ -1,6 +1,6 @@
 # Make Random
 
-<!-- [![Build Status](https://travis-ci.org/johnfoderaro/make-random.svg?branch=master)](https://travis-ci.org/johnfoderaro/make-random) -->
+[![Build Status](https://travis-ci.com/karnthis/make-random.svg?branch=master)](https://travis-ci.com/karnthis/make-random)
 [![forthebadge](https://forthebadge.com/images/badges/gluten-free.svg)](https://forthebadge.com)
 
 [![License: MIT](https://badgen.net/github/license/karnthis/make-random)](https://opensource.org/licenses/MIT)

@@ -1,11 +1,6 @@
 'use strict';
 
-const Purify = require('purify-int')
-const Crypto = require('crypto')
+const dep = require('./deprecated/v1') // floor(), ceil()
+const libs = require('./libs') // range()
 
-const { floor, ceil } = require('./deprecated/v1')
-
-module.exports = {
-	floor,
-	ceil
-}
+module.exports = Object.assign({}, dep, libs)
