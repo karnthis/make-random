@@ -1,6 +1,6 @@
 'use strict';
 
 const dep = require('./deprecated/v1') // floor(), ceil()
-const libs = require('./libs') // range()
+const libs = require('./libs') // flexRange(), setRange()
 
 module.exports = Object.assign({}, dep, libs)

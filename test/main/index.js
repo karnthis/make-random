@@ -18,27 +18,12 @@ describe('flexRange()', () => {
 	it(`should return randomly 0 or 1 if passed no arguments`, () => {
 		expect(flexRange()).to.be.within(0,1);
 	});
-	it(`should return 0 if a number or number string is not passed to range()`, () => {
-		expect(flexRange('test')).to.equal(0);
-		// expect(flexRange(true)).to.equal(0);
-		expect(flexRange({})).to.equal(0);
-		expect(flexRange([])).to.equal(0);
-		expect(flexRange(() => {})).to.equal(0);
-	});
 });
 
 describe('setRange()', () => {
 	it(`should be a function`, ()=> {
 		expect(setRange).to.be.a('function');
 	});
-	// it(`should return a positive random number`, () => {
-	// 	expect(setRange(10)).to.be.a('number').and.be.greaterThan(-1);
-	// 	expect(setRange('10')).to.be.an('number').and.be.greaterThan(-1);
-	// });
-	// it(`should return a negative random number`, () => {
-	// 	expect(setRange(-10)).to.be.a('number').and.be.lessThan(0);
-	// 	expect(setRange('-10')).to.be.an('number').and.be.lessThan(0);
-	// });
 	it(`should return randomly -100 to 100 if passed no arguments`, () => {
 		expect(setRange()).to.be.an('number').to.be.within(-100,100);
 	});
@@ -63,11 +48,4 @@ describe('setRange()', () => {
 	it(`should default to flexRange() behavior if input is the same`, () => {
 		expect(setRange(10,10)).to.be.an('number').and.be.greaterThan(-1);
 	});
-	// it(`should return 0 if a number or number string is not passed to range()`, () => {
-	// 	expect(setRange('test')).to.equal(0);
-	// 	expect(setRange(true)).to.equal(0);
-	// 	expect(setRange({})).to.equal(0);
-	// 	expect(setRange([])).to.equal(0);
-	// 	expect(setRange(() => {})).to.equal(0);
-	// });
 });
