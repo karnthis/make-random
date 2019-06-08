@@ -23,6 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- LINKS -->
 <!-- RELEASES -->
-[Unreleased]: https://github.com/karnthis/make-random/compare/v0.1.5...HEAD
+[Unreleased]: https://github.com/karnthis/make-random/compare/v0.1.5...dev
 [v0.1.5]: https://github.com/karnthis/make-random/compare/v0.1.4...v0.1.5
 <!-- ISSUES -->

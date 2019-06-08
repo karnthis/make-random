@@ -61,7 +61,4 @@ function setRange(v1 = -100, v2 = 100) {
 	return (baseValue < 0) ? (result * -1) + low : result + low
 }
 
-console.log(flexRange(-5))
-// console.log(setRange(20, 10))
-
 module.exports = { flexRange, setRange }
