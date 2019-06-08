@@ -9,7 +9,7 @@
 [![npm: version](https://badgen.net/npm/v/make-random)](https://www.npmjs.com/package/make-random)
 [![npm: downloads](https://badgen.net/npm/dt/make-random)](https://www.npmjs.com/package/make-random)
 
-## For Make Random (Legacy) [Please Click Here](https://github.com/karnthis/make-random-legacy)
+## For Make Random (Legacy) [Please Click Here](https://www.npmjs.com/package/make-random-legacy)
 
 ## About Make Random
 
