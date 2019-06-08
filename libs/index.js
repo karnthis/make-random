@@ -3,16 +3,22 @@
 const Purify = require('purify-int')
 const Crypto = require('crypto')
 
-const debug = true
-
 // INTERNAL
 function foundation(base) {
 	const trueBase = Math.abs(base)
 	const byteCount = makeByteCount(trueBase)
-	// if (debug) console.log(byteCount)
-	const hexString = Crypto.randomBytes(byteCount).toString('hex')
-	// if (debug) console.log(parseInt(hexString, 16))
-	return parseInt(hexString, 16) % trueBase
+	return promiseCryptoRBytes(byteCount)
+	.then(buf => buf.toString('hex'))
+	.then(hex => parseInt(hex, 16) % trueBase)
+}
+
+function promiseCryptoRBytes(byteCount = 1) {
+	return new Promise((resolve, reject) => {
+		Crypto.randomBytes(byteCount, (err, buf) => {
+			if (err) throw err
+			resolve(buf)
+		})
+	})
 }
 
 function makeByteCount(max) {
@@ -32,16 +38,15 @@ function offsetNum(v, invert = false) {
 	} else {
 		return (v < 0) ? ++v : --v
 	}
-	
+
 }
 
 // EXTERNAL
 function flexRange(v = 1) {
 	v = (v > 0) ? ++v : --v
 	const pureV = Purify.asInt(v, 1)
-	const result = foundation(pureV)
-	console.log(result)
-	return (pureV < 0 && result !== 0 ) ? result * -1 : result
+	return foundation(pureV)
+	.then(res => (pureV < 0 && res !== 0) ? res * -1 : res)
 }
 
 function setRange(v1 = -100, v2 = 100) {
@@ -55,11 +60,11 @@ function setRange(v1 = -100, v2 = 100) {
 		high = v1
 		low = v2
 	} else {
-		return flexRange(offsetNum(v2,true))
+		return flexRange(offsetNum(v2, true))
 	}
 	const baseValue = high - low
-	const result = foundation(baseValue)
-	return (baseValue < 0) ? (result * -1) + low : result + low
+	return foundation(baseValue)
+	.then(res => (baseValue < 0) ? (res * -1) + low : res + low)
 }
 
 module.exports = { flexRange, setRange }
