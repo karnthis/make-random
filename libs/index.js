@@ -22,6 +22,7 @@ function makeByteCount(max) {
 		cycle *= 256
 		ret++
 	}
+	if (ret == 1) ret++
 	return ret
 }
 
