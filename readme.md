@@ -9,7 +9,11 @@
 [![npm: version](https://badgen.net/npm/v/make-random)](https://www.npmjs.com/package/make-random)
 [![npm: downloads](https://badgen.net/npm/dt/make-random)](https://www.npmjs.com/package/make-random)
 
-A lightweight Node.js module to help with generating a random number between either 1 or 0 and your specified "maximum" value. This module comes in handy for easily generating a random number for tasks such as dealing with arrays (zero based index) or pagination (one based index).
+## For Make Random (Legacy) [Please Click Here](https://github.com/karnthis/make-random-legacy)
+
+## About Make Random
+
+Make Random is a lightweight Node.js Cryptographically Secure Pseudo-Random Number Generator module to help with generating random numbers and other values using the power of Crypto. Trust your results to be both secure and random!
 
 ## Getting started
 ```shell
@@ -19,33 +23,59 @@ npm install make-random
 ## Examples
 
 ```javascript
-const makeRandom = require('make-random');
+const { flexRange, setRange } = require('make-random');
 
-makeRandom.ceil(200);
-// returns a random number between 1 and 200
+// All ranges are inclusive of the passed value(s)
 
-makeRandom.floor(10);
-// returns a random number between 0 and 10
+flexRange(200);
+// returns a random integer between 0 and 200
+flexRange("200");
+// returns a random integer between 0 and 200
 
-makeRandom.ceil(-42);
-// returns random number between 0 and -42
+flexRange(-10);
+// returns a random integer between -10 and 0
+flexRange("-10");
+// returns a random integer between -10 and 0
 
-makeRandom.floor(-10);
-// returns a random number between 1 and -10
+flexRange();
+// returns randomly 0 or 1
 
-makeRandom.floor(-0);
-// returns 0
+setRange(-42,42);
+// returns random integer between -42 and 42
+setRange(-42,"42");
+// returns random integer between -42 and 42
+
+setRange(10, 100);
+// returns a random integer between 10 and 100
+setRange("10", "100");
+// returns a random integer between 10 and 100
+
+setRange(-5);
+// returns a random integer between -5 and 100
+setRange("100", "-5");
+// returns a random integer between -5 and 100
+
+setRange();
+// returns random interger between -100 and 100
 ```
 
 ## Usage
 
-### `makeRandom.ceil(number);`
+### `flexRange(integer);`
 
-The `ceil()` method accepts only a number as its single argument -- the maximum value for the range the random number is generated against. If the argument is a positive number, the method returns a number between 1 and your maximum value. If the number is negative, this method returns a value between the maximum negative value and 0. Please note, "-0" gets "normalized" to 0 in this module.
+The `flexRange()` method accepts any integer or integer-like string as an optional single argument. The method returns an integer between 0 and the argument value (inclusive). This holds true for both positive and negative arguements. If no arguement is given, the method defaults to randomly returning 0 or 1.
 
-### `makeRandom.floor(number);`
+### `setRange(integer);`
 
-The `floor()` method accepts only a number as its single argument -- the maximum value for the range the random number is generated against. If the argument is a positive number, the method returns a number between 0 and your maximum value. If the number is negative, this method returns a value between the maximum negative value and 1.
+The `setRange()` method accepts any integers or integer-like strings as optional single or pair arguments. The method returns an integer between the 2 arguments given. If only 1 arguement is given, the random number will be between the argument value and 100. If no arguments are given, the method defaults to returning a random integer between -100 and 100.
+
+Additionally, the `setRange()` method will accept paired arguments in any order, i.e. both `setRange(-10, 10)` and `setRange(10, -10)` is valid and will return the same results.
+
+## Deprecated
+
+### Make-Random-Legacy
+
+The old methods `makeRandom.ceil()` and `makeRandom.floor()` have been discontined. They are currently still available in this package, however they will be removed at a later date. If continued use is needed and the new `flexRange()` will not meet your needs, please switch to [make-random-legacy](https://github.com/karnthis/make-random-legacy) or consider submitting a feature request or PR.
 
 ## License
 
