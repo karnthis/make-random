@@ -1,33 +1,30 @@
 {
   "name": "make-random",
   "version": "0.1.5",
-  "description": "💯 Make a random number",
+  "description": "Make a random number, powered by Crypto",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/karnthis/make-random"
   },
   "keywords": [
-    "generate random number",
-    "random number generator",
-    "get random number",
-    "make random number",
-    "random number",
-    "random negative number",
-    "generate negative numbers",
-    "random",
-    "numbers",
     "number",
-    "no negative zero"
+    "numbers",
+    "random",
+    "generate",
+    "generator",
+    "crypto"
   ],
   "author": "Erin Rivas <contact@atomicbear.com>",
   "license": "MIT",
-  "readmeFilename": "readme.md",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.1.4"
+  },
+  "dependencies": {
+    "purify-int": "^1.1.0"
   }
 }
