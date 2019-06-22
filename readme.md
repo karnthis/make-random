@@ -9,7 +9,7 @@
 [![npm: version](https://badgen.net/npm/v/make-random)](https://www.npmjs.com/package/make-random)
 [![npm: downloads](https://badgen.net/npm/dt/make-random)](https://www.npmjs.com/package/make-random)
 
-## For Make Random (Legacy) [Please Click Here](https://www.npmjs.com/package/make-random-legacy)
+## For Legacy Make Random [Please Click Here](https://www.npmjs.com/package/make-random-legacy)
 
 ## About Make Random
 
@@ -21,55 +21,51 @@ npm install make-random
 ```
 
 ## Examples
+__All ranges are inclusive of the passed value(s)__
+### flexRange()
+
+The `flexRange()` method accepts any integer or integer-like string as an optional single argument. The method returns an integer between 0 and the argument value (inclusive). This holds true for both positive and negative arguements. If no arguement is given, the method defaults to randomly returning 0 or 1.
 
 ```javascript
 const { flexRange, setRange } = require('make-random');
 
-// All ranges are inclusive of the passed value(s)
-
+// Return a random integer between 0 and 200
 flexRange(200);
-// returns a random integer between 0 and 200
+
+// Accept integer or integer-like string
 flexRange("200");
-// returns a random integer between 0 and 200
 
+// Works with negative values
 flexRange(-10);
-// returns a random integer between -10 and 0
-flexRange("-10");
-// returns a random integer between -10 and 0
 
+// Defaults to returning 0 or 1
 flexRange();
-// returns randomly 0 or 1
-
-setRange(-42,42);
-// returns random integer between -42 and 42
-setRange(-42,"42");
-// returns random integer between -42 and 42
-
-setRange(10, 100);
-// returns a random integer between 10 and 100
-setRange("10", "100");
-// returns a random integer between 10 and 100
-
-setRange(-5);
-// returns a random integer between -5 and 100
-setRange("100", "-5");
-// returns a random integer between -5 and 100
-
-setRange();
-// returns random interger between -100 and 100
 ```
 
-## Usage
-
-### `flexRange(integer);`
-
-The `flexRange()` method accepts any integer or integer-like string as an optional single argument. The method returns an integer between 0 and the argument value (inclusive). This holds true for both positive and negative arguements. If no arguement is given, the method defaults to randomly returning 0 or 1.
-
-### `setRange(integer);`
+### setRange()
 
 The `setRange()` method accepts any integers or integer-like strings as optional single or pair arguments. The method returns an integer between the 2 arguments given. If only 1 arguement is given, the random number will be between the argument value and 100. If no arguments are given, the method defaults to returning a random integer between -100 and 100.
 
 Additionally, the `setRange()` method will accept paired arguments in any order, i.e. both `setRange(-10, 10)` and `setRange(10, -10)` is valid and will return the same results.
+
+```javascript
+const { flexRange, setRange } = require('make-random');
+
+// Return random integer between -42 and 42
+setRange(-42,42);
+
+// Accept integer or integer-like strings
+setRange(-42,"42");
+
+// Order of values does not matter
+setRange("100", "-5");
+
+// Return a random integer between -5 and 100
+setRange(-5);
+
+// Return random interger between -100 and 100
+setRange();
+```
 
 ## Deprecated
 
