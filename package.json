@@ -1,30 +1,35 @@
 {
-  "name": "make-random",
-  "version": "0.1.7",
-  "description": "Make a random number, powered by Crypto",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha --recursive"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/karnthis/make-random"
-  },
-  "keywords": [
-    "number",
-    "numbers",
-    "random",
-    "generate",
-    "generator",
-    "crypto"
-  ],
-  "author": "Erin Rivas <contact@atomicbear.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4"
-  },
-  "dependencies": {
-    "purify-int": "^1.1.0"
-  }
+	"name": "make-random",
+	"version": "0.1.7",
+	"description": "Make a random value, powered by Crypto",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha --recursive"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/karnthis/make-random"
+	},
+	"keywords": [
+		"number",
+		"numbers",
+		"string",
+		"strings",
+		"words",
+		"random",
+		"generate",
+		"generator",
+		"crypto"
+	],
+	"author": "Erin Rivas <me@erinrivas.com>",
+	"homepage": "https://github.com/karnthis/make-random#readme",
+	"bugs": "https://github.com/karnthis/make-random/issues",
+	"license": "MIT",
+	"devDependencies": {
+		"chai": "^4.2.0",
+		"mocha": "^6.1.4"
+	},
+	"dependencies": {
+		"purify-int": "^1.1.0"
+	}
 }
