@@ -5,9 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-<!-- #### Added -->
+#### Added
+- Two random string functions:
+	- `azString()` Generates a randomized uppercase(default) A-Z string of specified length. Optional second booblean argument toggles upper/lowercase.
+	- `randomString()` Generates a true random string of specified length
+- Random word generator:
+	- `randomWords()` Generates text block with specified number of random Latin words. All words intentionally begin with E or R.
 #### Changed
-- Updated readme to be more concise
+- Updated readme to be more concise.
 <!-- #### Removed -->
 
 ## Major Releases:

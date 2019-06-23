@@ -54,16 +54,18 @@ function offsetNum(v, invert = false) {
 	}
 }
 
-async function randomIndex(count = 3, len = 26, source) {
-	for (const i = 0; i < count; i++) {
-		const index = await numberFoundation(len - 1)
-		return source[index]
+async function randomLetter(count = 3, source) {
+	let ret = ''
+	for (let i = 0; i < count; i++) {
+		const index = await numberFoundation(25)
+		ret += source[index]
 	}
+	return ret
 }
 
 // EXTERNAL
 function flexRange(v = 1) {
-	v = (v > 0) ? v : --v
+	// v = (v > 0) ? v : --v
 	const pureV = Purify.asInt(v, 1)
 	return numberFoundation(pureV)
 	.then(res => (pureV < 0 && res !== 0) ? res * -1 : res)
@@ -91,9 +93,9 @@ function setRange(v1 = -100, v2 = 100) {
 
 function azString(len = 10, upper = true) {
 	if (upper) {
-
+		return randomLetter(len, asUpper)
 	} else {
-
+		return randomLetter(len, asLower)
 	}
 }
 function randomString(len = 10) {
@@ -101,9 +103,20 @@ function randomString(len = 10) {
 	.then(hex => hex.slice(0, len))
 }
 
-function randomWords(len = 5) {
-
+async function randomWords(len = 5) {
+	let ret = []
+	for (let i = 0; i < len; i++) {
+		const index = await numberFoundation(255)
+		ret.push(latin[index])
+	}
+	return ret.join(' ')
 }
 
 
-module.exports = { flexRange, setRange, randomString }
+module.exports = {
+	flexRange,
+	setRange,
+	azString,
+	randomString,
+	randomWords
+}

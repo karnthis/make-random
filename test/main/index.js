@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
-const { flexRange, setRange, randomString } = require('../../libs');
+const { flexRange, setRange, azString, randomString, randomWords} = require('../../libs');
 
 describe('flexRange()', () => {
 	it(`should be a function`, ()=> {
@@ -73,78 +73,70 @@ describe('setRange()', () => {
 	});
 });
 
-// describe('setRange()', () => {
-// 	it(`should be a function`, ()=> {
-// 		expect(setRange).to.be.a('function');
-// 	});
-// 	it(`should return randomly -100 to 100 if passed no arguments`, async () => {
-// 		const result = await setRange()
-// 		expect(result).to.be.an('number').to.be.within(-100,100);
-// 	});
-// 	it(`should return randomly 10 to 50 if passed those values`, async () => {
-// 		const result = await setRange(10,50)
-// 		expect(result).to.be.an('number').to.be.within(10,50);
-// 	});
-// 	it(`should handle if order is flipped`, async () => {
-// 		const result = await setRange(50,10)
-// 		expect(result).to.be.an('number').to.be.within(10,50);
-// 	});
-// 	it(`should handle mixed positive/negative numbers (-10 to 10)`, async () => {
-// 		const result = await setRange(-10,10)
-// 		expect(result).to.be.an('number').to.be.within(-10,10);
-// 	});
-// 	it(`should handle negative numbers (-10 to -50)`, async () => {
-// 		const result = await setRange(-10,-50)
-// 		expect(result).to.be.an('number').to.be.within(-50,-10);
-// 	});
-// 	it(`should handle numbers as strings ('10' to '-50')`, async () => {
-// 		const result = await setRange('10','-50')
-// 		expect(result).to.be.an('number').to.be.within(-50,10);
-// 	});
-// 	it(`should handle mixed numbers as strings ('10' to -50)`, async () => {
-// 		const result = await setRange('10',-50)
-// 		expect(result).to.be.an('number').to.be.within(-50,10);
-// 	});
-// 	it(`should default to flexRange() behavior if input is the same`, async () => {
-// 		const result = await setRange(10,10)
-// 		expect(result).to.be.an('number').and.be.greaterThan(-1);
-// 	});
-// });
+describe('azString()', () => {
+	it(`should be a function`, ()=> {
+		expect(azString).to.be.a('function');
+	});
+	it(`should return a randomized uppercase a-z string 10 characters long if passed no arguments`, async () => {
+		const result = await azString()
+		console.log(result)
+		expect(result).to.be.an('string').of.length(10);
+	});
+	it(`should return a randomized uppercase a-z string the length of the argument`, async () => {
+		const result = await azString(25, true)
+		console.log(result)
+		expect(result).to.be.an('string').of.length(25);
+	});
+	it(`should return a randomized lowercase a-z string the length of the argument`, async () => {
+		const result = await azString(25, false)
+		console.log(result)
+		expect(result).to.be.an('string').of.length(25);
+	});
+	it(`should handle string inputs ('15')`, async () => {
+		const result = await azString('15')
+		console.log(result)
+		expect(result).to.be.an('string').of.length(15);
+	});
+});
 
 describe('randomString()', () => {
 	it(`should be a function`, ()=> {
 		expect(randomString).to.be.a('function');
 	});
-	it(`should return a random string 10 long if passed no arguments`, async () => {
+	it(`should return a randomized string 10 characters long if passed no arguments`, async () => {
 		const result = await randomString()
-		expect(result).to.be.an('string').to.have.length(10);
+		expect(result).to.be.an('string').of.length(10);
 	});
-	it(`should return randomly 10 to 50 if passed those values`, async () => {
+	it(`should return a randomized string the length of the argument`, async () => {
 		const result = await randomString(25)
-		expect(result).to.be.an('string').to.have.length(25);
+		expect(result).to.be.an('string').of.length(25);
 	});
-	// it(`should handle if order is flipped`, async () => {
-	// 	const result = await randomString(50,10)
-	// 	expect(result).to.be.an('string').to.be.within(10,50);
-	// });
-	// it(`should handle mixed positive/negative string (-10 to 10)`, async () => {
-	// 	const result = await randomString(-10,10)
-	// 	expect(result).to.be.an('string').to.be.within(-10,10);
-	// });
-	// it(`should handle negative numbers (-10 to -50)`, async () => {
-	// 	const result = await randomString(-10,-50)
-	// 	expect(result).to.be.an('string').to.be.within(-50,-10);
-	// });
 	it(`should handle string inputs ('15')`, async () => {
 		const result = await randomString('15')
-		expect(result).to.be.an('string').to.have.length(15);
+		expect(result).to.be.an('string').of.length(15);
 	});
-	// it(`should handle mixed numbers as strings ('10' to -50)`, async () => {
-	// 	const result = await randomString('10',-50)
-	// 	expect(result).to.be.an('string').to.be.within(-50,10);
-	// });
-	// it(`should default to flexRange() behavior if input is the same`, async () => {
-	// 	const result = await randomString(10,10)
-	// 	expect(result).to.be.an('string').and.be.greaterThan(-1);
-	// });
+});
+
+describe('randomWords()', () => {
+	it(`should be a function`, ()=> {
+		expect(randomWords).to.be.a('function');
+	});
+	it(`should return a randomized string 5 words long if passed no arguments`, async () => {
+		const result = await randomWords()
+		expect(result).to.be.an('string')
+		const resultArray = result.split(' ')
+		expect(resultArray).to.be.of.length(5);
+	});
+	it(`should return a randomized string with as many words as the argument`, async () => {
+		const result = await randomWords(12)
+		expect(result).to.be.an('string')
+		const resultArray = result.split(' ')
+		expect(resultArray).to.be.of.length(12);
+	});
+	it(`should handle string inputs ('15')`, async () => {
+		const result = await randomWords(15)
+		expect(result).to.be.an('string')
+		const resultArray = result.split(' ')
+		expect(resultArray).to.be.of.length(15);
+	});
 });
