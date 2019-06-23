@@ -11,7 +11,7 @@
 
 ## About Make Random
 
-Make Random is a lightweight Node.js Cryptographically Secure Pseudo-Random Number Generator module to help with generating random numbers and other values using the power of Crypto. Trust your results to be both secure and random!
+Make Random is a lightweight Node.js Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) module to help with generating random numbers and other values using the power of Crypto. Trust your results to be both secure and random!
 
 ## Getting started
 ```shell

@@ -19,7 +19,8 @@
 		"random",
 		"generate",
 		"generator",
-		"crypto"
+		"crypto",
+		"CSPRNG"
 	],
 	"author": "Erin Rivas <me@erinrivas.com>",
 	"homepage": "https://github.com/karnthis/make-random#readme",
