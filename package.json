@@ -1,6 +1,6 @@
 {
 	"name": "make-random",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Make a random value, powered by Crypto",
 	"main": "index.js",
 	"scripts": {
@@ -19,7 +19,8 @@
 		"random",
 		"generate",
 		"generator",
-		"crypto"
+		"crypto",
+		"CSPRNG"
 	],
 	"author": "Erin Rivas <me@erinrivas.com>",
 	"homepage": "https://github.com/karnthis/make-random#readme",

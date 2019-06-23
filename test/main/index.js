@@ -67,6 +67,18 @@ describe('setRange()', () => {
 		const result = await setRange('10',-50)
 		expect(result).to.be.an('number').to.be.within(-50,10);
 	});
+	it(`should range between input (-25) and 100`, async () => {
+		const result = await setRange('-25')
+		expect(result).to.be.an('number').to.be.within(-25,100);
+	});
+	it(`should range between input (10) and 100`, async () => {
+		const result = await setRange('10')
+		expect(result).to.be.an('number').to.be.within(10,100);
+	});
+	it(`should range between input (250) and 100`, async () => {
+		const result = await setRange('250')
+		expect(result).to.be.an('number').to.be.within(100,250);
+	});
 	it(`should default to flexRange() behavior if input is the same`, async () => {
 		const result = await setRange(10,10)
 		expect(result).to.be.an('number').and.be.greaterThan(-1);

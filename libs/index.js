@@ -46,14 +46,6 @@ function makeByteCount(max) {
 	return ret
 }
 
-function offsetNum(v, invert = false) {
-	if (!invert) {
-		return (v > 0) ? ++v : --v
-	} else {
-		return (v < 0) ? ++v : --v
-	}
-}
-
 async function randomLetter(count = 3, source) {
 	let ret = ''
 	for (let i = 0; i < count; i++) {
@@ -64,13 +56,13 @@ async function randomLetter(count = 3, source) {
 }
 
 // EXTERNAL
-function flexRange(v = 1) {
+function random(v = 1) {
 	// v = (v > 0) ? v : --v
 	const pureV = Purify.asInt(v, 1)
 	return numberFoundation(pureV)
 	.then(res => (pureV < 0 && res !== 0) ? res * -1 : res)
 }
-function setRange(v1 = -100, v2 = 100) {
+function randomInRange(v1 = -100, v2 = 100) {
 	v1 = Purify.asInt(v1, 1)
 	v2 = Purify.asInt(v2, 1)
 	// v1 = offsetNum(Purify.asInt(v1, 1))
@@ -83,7 +75,7 @@ function setRange(v1 = -100, v2 = 100) {
 		high = v1
 		low = v2
 	} else {
-		return flexRange(v2)
+		return random(v2)
 		// return flexRange(offsetNum(v2, true))
 	}
 	const baseValue = high - low
@@ -91,7 +83,7 @@ function setRange(v1 = -100, v2 = 100) {
 	.then(res => (baseValue < 0) ? (res * -1) + low : res + low)
 }
 
-function azString(len = 10, upper = true) {
+function randomAZString(len = 10, upper = true) {
 	if (upper) {
 		return randomLetter(len, asUpper)
 	} else {
@@ -103,7 +95,7 @@ function randomString(len = 10) {
 	.then(hex => hex.slice(0, len))
 }
 
-async function randomWords(len = 5) {
+async function randomLatin(len = 5) {
 	let ret = []
 	for (let i = 0; i < len; i++) {
 		const index = await numberFoundation(255)
@@ -112,11 +104,33 @@ async function randomWords(len = 5) {
 	return ret.join(' ')
 }
 
+// WRAPPERS
+
+function flexRange(v) {
+	return random(v)
+}
+function setRange(v1,v2) {
+	return randomInRange(v1,v2)
+}
+function azString(len, upper) {
+	return randomAZString(len, upper)
+}
+function randomWords(len) {
+	return randomLatin(len)
+}
+
+// EXPORT
 
 module.exports = {
+	// WRAPPERS
 	flexRange,
 	setRange,
 	azString,
+	randomWords,
+	// REAL FUNCTIONS
+	random,
+	randomInRange,
 	randomString,
-	randomWords
+	randomAZString,
+	randomLatin
 }
