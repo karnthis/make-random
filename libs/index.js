@@ -3,13 +3,27 @@
 const Purify = require('purify-int')
 const Crypto = require('crypto')
 
+// DATA IMPORT
+const latin = require('../data/256Latin.js')
+const { asUpper, asLower } = require('../data/letters.js')
+
 // INTERNAL
 function foundation(base) {
-	const trueBase = Math.abs(base)
-	const byteCount = makeByteCount(trueBase)
+	const byteCount = makeByteCount(base)
 	return promiseCryptoRBytes(byteCount)
 	.then(buf => buf.toString('hex'))
+}
+
+function numberFoundation(base) {
+	const trueBase = Math.abs(base)
+	return foundation(trueBase)
 	.then(hex => parseInt(hex, 16) % trueBase)
+}
+
+function stringFoundation(base) {
+	const trueBase = Math.abs(base)
+	return promiseCryptoRBytes(trueBase)
+	.then(buf => buf.toString('hex'))
 }
 
 function promiseCryptoRBytes(byteCount = 1) {
@@ -38,20 +52,27 @@ function offsetNum(v, invert = false) {
 	} else {
 		return (v < 0) ? ++v : --v
 	}
+}
 
+async function randomIndex(count = 3, len = 26, source) {
+	for (const i = 0; i < count; i++) {
+		const index = await numberFoundation(len - 1)
+		return source[index]
+	}
 }
 
 // EXTERNAL
 function flexRange(v = 1) {
-	v = (v > 0) ? ++v : --v
+	v = (v > 0) ? v : --v
 	const pureV = Purify.asInt(v, 1)
-	return foundation(pureV)
+	return numberFoundation(pureV)
 	.then(res => (pureV < 0 && res !== 0) ? res * -1 : res)
 }
-
 function setRange(v1 = -100, v2 = 100) {
-	v1 = offsetNum(Purify.asInt(v1, 1))
-	v2 = offsetNum(Purify.asInt(v2, 1))
+	v1 = Purify.asInt(v1, 1)
+	v2 = Purify.asInt(v2, 1)
+	// v1 = offsetNum(Purify.asInt(v1, 1))
+	// v2 = offsetNum(Purify.asInt(v2, 1))
 	let high, low
 	if (v1 < v2) {
 		high = v2
@@ -60,11 +81,29 @@ function setRange(v1 = -100, v2 = 100) {
 		high = v1
 		low = v2
 	} else {
-		return flexRange(offsetNum(v2, true))
+		return flexRange(v2)
+		// return flexRange(offsetNum(v2, true))
 	}
 	const baseValue = high - low
-	return foundation(baseValue)
+	return numberFoundation(baseValue)
 	.then(res => (baseValue < 0) ? (res * -1) + low : res + low)
 }
 
-module.exports = { flexRange, setRange }
+function azString(len = 10, upper = true) {
+	if (upper) {
+
+	} else {
+
+	}
+}
+function randomString(len = 10) {
+	return stringFoundation(len)
+	.then(hex => hex.slice(0, len))
+}
+
+function randomWords(len = 5) {
+
+}
+
+
+module.exports = { flexRange, setRange, randomString }
