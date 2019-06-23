@@ -20,94 +20,110 @@ npm install make-random
 
 ## Examples
 ### Jump-to:
-- [flexRange()](#flexRange)
-- [setRange()](#setRange)
-- [azString()](#azString)
+- [random()](#random)
+- [randomInRange()](#randomInRange)
+- [randomAZString()](#randomAZString)
 - [randomString()](#randomString)
-- [randomWords()](#randomWords)
+- [randomLatin()](#randomLatin)
 
 __All ranges are inclusive of the passed value(s)__
-### flexRange()
+### random()
 
-The `flexRange()` method accepts any integer or integer-like string as an optional single argument. The method returns an integer between 0 and the argument value (inclusive). This holds true for both positive and negative arguments. If no argument is given, the method defaults to randomly returning 0 or 1.
+The `random()` method accepts any integer or integer-like string as an optional single argument. The method returns a true integer between 0 and the argument value (inclusive). This holds true for both positive and negative arguments. If no argument is given, the method defaults to randomly returning 0 or 1.
 
 ```javascript
-const { flexRange } = require('make-random')
+const { random } = require('make-random')
 
 // Return a random integer between 0 and 200
-flexRange(200)
+random(200)
 .then(resp => console.log(resp))
 
 // Accept integer or integer-like string
-flexRange("200")
+random("200")
 .then(resp => console.log(resp))
 
 // Works with negative values
-flexRange(-10)
+random(-10)
+.then(resp => console.log(resp))
+
+// Including negative strings
+random("-12")
 .then(resp => console.log(resp))
 
 // Defaults to returning 0 or 1
-flexRange()
+random()
 .then(resp => console.log(resp))
 ```
 
-### setRange()
+### randomInRange()
 
-The `setRange()` method accepts any integers or integer-like strings as optional single or pair arguments. The method returns an integer between the 2 arguments given. If only 1 argument is given, the random number will be between the argument value and 100. If no arguments are given, the method defaults to returning a random integer between -100 and 100.
+The `randomInRange()` method accepts any integers or integer-like strings as optional single or pair arguments. The method returns a true integer between the 2 arguments given. If only 1 argument is given, the random number will be between the argument value and 100. If no arguments are given, the method defaults to returning a random integer between -100 and 100. If the arguements are the same value (-10, "-10"), the method will return an integer between 0 and the passed arguments as if `random()` was used.
 
-Additionally, the `setRange()` method will accept paired arguments in any order, i.e. both `setRange(-10, 10)` and `setRange(10, -10)` is valid and will return the same results.
+Additionally, the `randomInRange()` method will accept paired arguments in any order, i.e. both `randomInRange(-10, 10)` and `randomInRange(10, -10)` is valid and will return the same results.
 
 ```javascript
-const { setRange } = require('make-random')
+const { randomInRange } = require('make-random')
 
 // Return random integer between -42 and 42
-setRange(-42,42)
+randomInRange(-42,42)
 .then(resp => console.log(resp))
 
 // Accept integer or integer-like strings
-setRange(-42,"42")
+randomInRange(-42,"42")
+.then(resp => console.log(resp))
+
+// String position doesn't matter
+randomInRange("-42",42)
 .then(resp => console.log(resp))
 
 // Order of values does not matter
-setRange("100", "-5")
+randomInRange("100", "-5")
 .then(resp => console.log(resp))
 
 // Return a random integer between -5 and 100
-setRange(-5)
+randomInRange(-5)
+.then(resp => console.log(resp))
+
+// Return a random integer between 25 and 100
+randomInRange(25)
+.then(resp => console.log(resp))
+
+// Return a random integer between 100 and 250
+randomInRange(250)
 .then(resp => console.log(resp))
 
 // Return random interger between -100 and 100
-setRange()
+randomInRange()
 .then(resp => console.log(resp))
 ```
 
-### azString()
+### randomAZString()
 
-The `azString()` method accepts an integer or integer-like argument, and an optional boolean to determine upper or lowercase. It returns an A-Z string of the specified length. If no arguments are given, method defaults to a 10 character uppercase string.
+The `randomAZString()` method accepts an integer or integer-like argument, and a boolean to determine upper or lowercase as optional single or pair arguments. It returns an A-Z string of the specified length. If no arguments are given, method defaults to a 10 character uppercase string.
 
 ```javascript
-const { azString } = require('make-random')
+const { randomAZString } = require('make-random')
 
 // Return uppercase 10 character random string
-azString()
+randomAZString()
 .then(resp => console.log(resp))
 
 // Return uppercase 15 character random string
-azString(15)
+randomAZString(15)
 .then(resp => console.log(resp))
 
 // Return lowercase 15 character random string
-azString(15, false)
+randomAZString(15, false)
 .then(resp => console.log(resp))
 
 // Accept integer or integer-like string
-azString('20')
+randomAZString('20')
 .then(resp => console.log(resp))
 ```
 
 ### randomString()
 
-The `randomString()` method accepts an integer or integer-like argument. It returns an alpha-numeric string of the specified length. If no arguments are given, method defaults to a 10 character string.
+The `randomString()` method accepts an optional integer or integer-like argument. It returns an alpha-numeric string of the specified length. If no argument is given, method defaults to a 10 character string.
 
 ```javascript
 const { randomString } = require('make-random')
@@ -125,23 +141,23 @@ randomString('20')
 .then(resp => console.log(resp))
 ```
 
-### randomWords()
+### randomLatin()
 
-The `randomWords()` method accepts an integer or integer-like argument. It returns a string with the specified number of random latin words. If no arguments are given, method defaults to 5 words. All words start with E or R.
+The `randomLatin()` method accepts an optional integer or integer-like argument. It returns a string with the specified number of random latin words. If no argument is given, method defaults to 5 words. All words start with E or R.
 
 ```javascript
-const { randomWords } = require('make-random')
+const { randomLatin } = require('make-random')
 
 // Return string with 5 random words
-randomWords()
+randomLatin()
 .then(resp => console.log(resp))
 
 // Return string with 12 random words
-randomWords(12)
+randomLatin(12)
 .then(resp => console.log(resp))
 
 // Accept integer or integer-like string
-randomWords('20')
+randomLatin('20')
 .then(resp => console.log(resp))
 ```
 
