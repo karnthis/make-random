@@ -1,6 +1,5 @@
 'use strict';
 
-const libs = require('./libs') // flexRange(), setRange()
-
+const libs = require('./libs')
 
 module.exports = Object.assign({}, libs)
