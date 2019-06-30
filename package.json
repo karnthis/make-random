@@ -1,6 +1,6 @@
 {
 	"name": "make-random",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Make a random value, powered by Crypto",
 	"main": "index.js",
 	"scripts": {
@@ -16,6 +16,8 @@
 		"string",
 		"strings",
 		"words",
+		"UUID",
+		"GUID",
 		"random",
 		"generate",
 		"generator",

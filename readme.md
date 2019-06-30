@@ -161,6 +161,19 @@ randomLatin('20')
 .then(resp => console.log(resp))
 ```
 
+### randomUUID()
+
+The `randomUUID()` method generates RFC 4122 compliant CSPRNG UUID
+
+```javascript
+const { randomUUID } = require('make-random')
+
+// Return UUID
+// example: DC3A411B-6C86-48D7-B0B3-369EF3CB73EF
+randomUUID()
+.then(resp => console.log(resp))
+```
+
 ## Deprecated
 
 ### Make-Random-Legacy
