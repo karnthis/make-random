@@ -29,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Release
 
 ## Minor Releases:
+### [v1.1.0] - 2019 06 29
+#### Added
+- `randomUUID()` Generate RFC 4122 compliant UUIDs
+
 ### [v1.0.1] - 2019 06 23
 #### Changed
 - Updated Readme
@@ -42,7 +46,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 - `setRange()`
 - `flexRange()`
-
 #### Changed
 - Deprecated: 
 	- `makeRandom.ceil()`
@@ -57,7 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- LINKS -->
 <!-- RELEASES -->
-[Unreleased]: https://github.com/karnthis/make-random/compare/v1.0.0...dev
+[Unreleased]: https://github.com/karnthis/make-random/compare/v1.1.0...dev
+[v1.1.0]: https://github.com/karnthis/make-random/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/karnthis/make-random/compare/v0.1.7...v1.0.0
 [v0.1.6]: https://github.com/karnthis/make-random/compare/v0.1.6...v0.1.7
 [v0.1.6]: https://github.com/karnthis/make-random/compare/v0.1.5...v0.1.6

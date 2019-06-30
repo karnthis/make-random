@@ -57,7 +57,6 @@ async function randomLetter(count = 3, source) {
 
 // EXTERNAL
 function random(v = 1) {
-	// v = (v > 0) ? v : --v
 	const pureV = Purify.asInt(v, 1)
 	return numberFoundation(pureV)
 	.then(res => (pureV < 0 && res !== 0) ? res * -1 : res)
@@ -65,8 +64,6 @@ function random(v = 1) {
 function randomInRange(v1 = -100, v2 = 100) {
 	v1 = Purify.asInt(v1, 1)
 	v2 = Purify.asInt(v2, 1)
-	// v1 = offsetNum(Purify.asInt(v1, 1))
-	// v2 = offsetNum(Purify.asInt(v2, 1))
 	let high, low
 	if (v1 < v2) {
 		high = v2
@@ -76,7 +73,6 @@ function randomInRange(v1 = -100, v2 = 100) {
 		low = v2
 	} else {
 		return random(v2)
-		// return flexRange(offsetNum(v2, true))
 	}
 	const baseValue = high - low
 	return numberFoundation(baseValue)
@@ -102,6 +98,33 @@ async function randomLatin(len = 5) {
 		ret.push(latin[index])
 	}
 	return ret.join(' ')
+}
+
+async function randomUUID() {
+	return stringFoundation(16)
+	.then(res => {
+		const byteTo4 = res.slice(12,14)
+		const maskOr = parseInt('01000000', 2)
+		const maskAnd = parseInt('01001111', 2)
+		const byteSet4 = (maskOr | (maskAnd & parseInt(byteTo4, 16)))
+		return res.slice(0,12) + byteSet4.toString(16) + res.slice(14)
+	})
+	.then(res => {
+		const bytePart2 = res.slice(16,18)
+		const maskOr = parseInt('10000000', 2)
+		const maskAnd = parseInt('10111111', 2)
+		const byteSetPart2 = (maskOr | (maskAnd & parseInt(bytePart2, 16)))
+		return res.slice(0,16) + byteSetPart2.toString(16) + res.slice(18)
+	})
+	.then(res => {
+		return [
+			res.slice(0,8),
+			res.slice(8, 12),
+			res.slice(12,16),
+			res.slice(16,20),
+			res.slice(20),
+		].join("-").toUpperCase()
+	})
 }
 
 // WRAPPERS
@@ -132,5 +155,6 @@ module.exports = {
 	randomInRange,
 	randomString,
 	randomAZString,
-	randomLatin
+	randomLatin,
+	randomUUID
 }
