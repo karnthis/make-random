@@ -1,7 +1,7 @@
 'use strict';
 
 const { expect } = require('chai');
-const { random, randomInRange, randomAZString, randomString, randomLatin} = require('../../libs');
+const { random, randomInRange } = require('../../libs');
 
 describe('random()', () => {
 	it(`should be a function`, ()=> {
@@ -82,73 +82,5 @@ describe('randomInRange()', () => {
 	it(`should default to random() behavior if input is the same`, async () => {
 		const result = await randomInRange(10,10)
 		expect(result).to.be.an('number').and.be.greaterThan(-1);
-	});
-});
-
-describe('randomAZString()', () => {
-	it(`should be a function`, ()=> {
-		expect(randomAZString).to.be.a('function');
-	});
-	it(`should return a randomized uppercase a-z string 10 characters long if passed no arguments`, async () => {
-		const result = await randomAZString()
-		console.log(result)
-		expect(result).to.be.an('string').of.length(10);
-	});
-	it(`should return a randomized uppercase a-z string the length of the argument`, async () => {
-		const result = await randomAZString(25, true)
-		console.log(result)
-		expect(result).to.be.an('string').of.length(25);
-	});
-	it(`should return a randomized lowercase a-z string the length of the argument`, async () => {
-		const result = await randomAZString(25, false)
-		console.log(result)
-		expect(result).to.be.an('string').of.length(25);
-	});
-	it(`should handle string inputs ('15')`, async () => {
-		const result = await randomAZString('15')
-		console.log(result)
-		expect(result).to.be.an('string').of.length(15);
-	});
-});
-
-describe('randomString()', () => {
-	it(`should be a function`, ()=> {
-		expect(randomString).to.be.a('function');
-	});
-	it(`should return a randomized string 10 characters long if passed no arguments`, async () => {
-		const result = await randomString()
-		expect(result).to.be.an('string').of.length(10);
-	});
-	it(`should return a randomized string the length of the argument`, async () => {
-		const result = await randomString(25)
-		expect(result).to.be.an('string').of.length(25);
-	});
-	it(`should handle string inputs ('15')`, async () => {
-		const result = await randomString('15')
-		expect(result).to.be.an('string').of.length(15);
-	});
-});
-
-describe('randomLatin()', () => {
-	it(`should be a function`, ()=> {
-		expect(randomLatin).to.be.a('function');
-	});
-	it(`should return a randomized string 5 words long if passed no arguments`, async () => {
-		const result = await randomLatin()
-		expect(result).to.be.an('string')
-		const resultArray = result.split(' ')
-		expect(resultArray).to.be.of.length(5);
-	});
-	it(`should return a randomized string with as many words as the argument`, async () => {
-		const result = await randomLatin(12)
-		expect(result).to.be.an('string')
-		const resultArray = result.split(' ')
-		expect(resultArray).to.be.of.length(12);
-	});
-	it(`should handle string inputs ('15')`, async () => {
-		const result = await randomLatin(15)
-		expect(result).to.be.an('string')
-		const resultArray = result.split(' ')
-		expect(resultArray).to.be.of.length(15);
 	});
 });
