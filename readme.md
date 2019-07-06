@@ -1,7 +1,5 @@
 # Make Random
 
-[![forthebadge](https://forthebadge.com/images/badges/gluten-free.svg)](https://forthebadge.com)
-
 [![License: MIT](https://badgen.net/github/license/karnthis/make-random)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.com/karnthis/make-random.svg?branch=master)](https://travis-ci.com/karnthis/make-random)
 [![github: version](https://badgen.net/github/release/karnthis/make-random)](https://github.com/karnthis/make-random)
