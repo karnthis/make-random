@@ -29,9 +29,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Release
 
 ## Minor Releases:
+### [v1.2.0] - 2019 07 05
+#### Added
+- Added UUID tests
+#### Changed
+- Updated Readme
+- Refactored tests
+#### Removed
+- No more Purify-Int dependency
+
 ### [v1.1.0] - 2019 06 29
 #### Added
-- `randomUUID()` Generate RFC 4122 compliant UUIDs
+- `randomUUID()` Generate v4-compliant UUIDs
 
 ### [v1.0.1] - 2019 06 23
 #### Changed

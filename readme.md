@@ -164,7 +164,7 @@ randomLatin('20')
 
 ### randomUUID()
 
-The `randomUUID()` method generates RFC 4122 compliant CSPRNG UUID
+The `randomUUID()` method generates v4-compliant CSPRNG UUID
 
 ```javascript
 const { randomUUID } = require('make-random')

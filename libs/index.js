@@ -1,7 +1,7 @@
 'use strict'
 
-const Purify = require('purify-int')
 const Crypto = require('crypto')
+const { cleanInteger } = require('../util/index')
 
 // DATA IMPORT
 const latin = require('../data/256Latin.js')
@@ -57,13 +57,13 @@ async function randomLetter(count = 3, source) {
 
 // EXTERNAL
 function random(v = 1) {
-	const pureV = Purify.asInt(v, 1)
+	const pureV = cleanInteger(v, 1)
 	return numberFoundation(pureV)
 	.then(res => (pureV < 0 && res !== 0) ? res * -1 : res)
 }
 function randomInRange(v1 = -100, v2 = 100) {
-	v1 = Purify.asInt(v1, 1)
-	v2 = Purify.asInt(v2, 1)
+	v1 = cleanInteger(v1, 1)
+	v2 = cleanInteger(v2, 1)
 	let high, low
 	if (v1 < v2) {
 		high = v2
