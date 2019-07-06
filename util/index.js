@@ -3,6 +3,13 @@ function deprecate(func, version) {
 	Please convert to make-random-legacy if this function is still needed.`)
 }
 
+function cleanInteger(x, fallback = 0) {
+	const cleanInt = Number(x)
+	const cleanFallback = Number(fallback)
+	return (isNaN(cleanInt)) ? (isNaN(cleanFallback)) ? 0 : cleanFallback : cleanInt
+}
+
 module.exports = {
-	deprecate
+	deprecate,
+	cleanInteger
 }
