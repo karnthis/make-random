@@ -25,6 +25,7 @@ npm install make-random
 - [randomAZString()](#randomAZString)
 - [randomString()](#randomString)
 - [randomLatin()](#randomLatin)
+- [randomUUID()](#randomUUID)
 
 __All ranges are inclusive of the passed value(s)__
 ### random()
@@ -178,7 +179,7 @@ randomUUID()
 
 ### Make-Random-Legacy
 
-The old methods `makeRandom.ceil()` and `makeRandom.floor()` have been discontined and removed. If continued use is needed and the new `flexRange()` will not meet your needs, please switch to [make-random-legacy](https://github.com/karnthis/make-random-legacy) or consider submitting a feature request or PR.
+The old methods `makeRandom.ceil()` and `makeRandom.floor()` have been discontined and removed. If continued use is needed and the new `random()` will not meet your needs, please switch to [make-random-legacy](https://github.com/karnthis/make-random-legacy) or consider submitting a feature request or PR.
 
 ## License
 
