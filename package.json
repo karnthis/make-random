@@ -1,6 +1,6 @@
 {
 	"name": "make-random",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "Make a random value, powered by Crypto",
 	"main": "index.js",
 	"scripts": {
@@ -31,6 +31,6 @@
 	"devDependencies": {
 		"chai": "^4.2.0",
 		"chai-uuid": "^1.0.6",
-		"mocha": "^7.2.0"
+		"mocha": "^9.1.2"
 	}
 }
