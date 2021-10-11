@@ -7,10 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- #### Added -->
 <!-- #### Changed -->
 <!-- #### Removed -->
-## [Unreleased]
-#### Changed
-- Changelog tweaks
-- Removed "Gluten Free" tag from Readme
+<!-- ## [Unreleased] -->
 
 ## Major Releases:
 ### [v1.0.0] - 2019 06 23
@@ -31,6 +28,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Release
 
 ## Minor Releases:
+## [v1.2.2] - 2021 10 24
+#### Changed
+- Changelog tweaks
+- Security updates
+- Removed "Gluten Free" tag from Readme
+
 ### [v1.2.0] - 2019 07 05
 #### Added
 - Added UUID tests
@@ -71,7 +74,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- LINKS -->
 <!-- RELEASES -->
-[Unreleased]: https://github.com/karnthis/make-random/compare/v1.2.0...dev
+[Unreleased]: https://github.com/karnthis/make-random/compare/v1.2.2...dev
+[v1.2.2]: https://github.com/karnthis/make-random/compare/v1.2.0...v1.2.2
 [v1.2.0]: https://github.com/karnthis/make-random/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/karnthis/make-random/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/karnthis/make-random/compare/v0.1.7...v1.0.0
