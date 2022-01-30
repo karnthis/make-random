@@ -28,6 +28,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Release
 
 ## Minor Releases:
+### [v1.3.0] - 2022 01 29
+#### Added
+- `flipCoin()` Generates a random boolean value
+- `randomCaseString()` Generates a true mixed-case random string of specified length
+#### Changed
+- `random()` Fixed bug where defaulting to randomly returning 0 or 1 always returned 0
+
 ## [v1.2.2] - 2021 10 24
 #### Changed
 - Changelog tweaks
@@ -74,7 +81,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- LINKS -->
 <!-- RELEASES -->
-[Unreleased]: https://github.com/karnthis/make-random/compare/v1.2.2...dev
+[Unreleased]: https://github.com/karnthis/make-random/compare/v1.3.0...dev
+[v1.3.0]: https://github.com/karnthis/make-random/compare/v1.2.2...v1.3.0
 [v1.2.2]: https://github.com/karnthis/make-random/compare/v1.2.0...v1.2.2
 [v1.2.0]: https://github.com/karnthis/make-random/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/karnthis/make-random/compare/v1.0.0...v1.1.0

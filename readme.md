@@ -19,9 +19,11 @@ npm install make-random
 ## Examples
 ### Jump-to:
 - [random()](#random)
+- [coinFlip()](#coinFlip)
 - [randomInRange()](#randomInRange)
 - [randomAZString()](#randomAZString)
 - [randomString()](#randomString)
+- [randomCaseString()](#randomCaseString)
 - [randomLatin()](#randomLatin)
 - [randomUUID()](#randomUUID)
 
@@ -51,6 +53,18 @@ random("-12")
 
 // Defaults to returning 0 or 1
 random()
+.then(resp => console.log(resp))
+```
+
+### coinFlip()
+
+The `coinFlip()` method accepts no arguments. The method returns a random boolean value.
+
+```javascript
+const { coinFlip } = require('make-random')
+
+// Return a random boolean value
+coinFlip()
 .then(resp => console.log(resp))
 ```
 
@@ -137,6 +151,26 @@ randomString(15)
 
 // Accept integer or integer-like string
 randomString('20')
+.then(resp => console.log(resp))
+```
+
+### randomCaseString()
+
+The `randomCaseString()` method accepts an optional integer or integer-like argument. It returns an alpha-numeric randomly mixed-case string of the specified length. If no argument is given, method defaults to a 10 character string.
+
+```javascript
+const { randomCaseString } = require('make-random')
+
+// Return 10 character mixed-case random string
+randomCaseString()
+.then(resp => console.log(resp))
+
+// Return 15 character mixed-case random string
+randomCaseString(15)
+.then(resp => console.log(resp))
+
+// Accept integer or integer-like string
+randomCaseString('20')
 .then(resp => console.log(resp))
 ```
 
