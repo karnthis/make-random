@@ -1,4 +1,6 @@
+dist/
 node_modules/
+packs/
 example.js
 .vs/
 .idea/

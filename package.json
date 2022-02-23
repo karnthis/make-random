@@ -1,10 +1,14 @@
 {
 	"name": "make-random",
-	"version": "1.3.0",
+	"version": "2.0.0",
 	"description": "Make a random value, powered by Crypto",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
-		"test": "mocha --recursive"
+		"build": "tsc && npm pack --pack-destination packs",
+		"patch": "tsc && npm version patch && npm publish",
+		"test": "mocha --recursive",
+		"trial": "node ./attempt.js"
 	},
 	"repository": {
 		"type": "git",
@@ -29,8 +33,11 @@
 	"bugs": "https://github.com/karnthis/make-random/issues",
 	"license": "MIT",
 	"devDependencies": {
+		"@types/node": "^14.14.32",
 		"chai": "^4.2.0",
 		"chai-uuid": "^1.0.6",
-		"mocha": "^9.1.2"
+		"mocha": "^9.1.2",
+		"tslint": "^6.1.3",
+		"typescript": "^4.4.4"
 	}
 }

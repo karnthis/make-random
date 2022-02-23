@@ -1,24 +1,24 @@
-'use strict'
-
-const Crypto = require('crypto')
-const { cleanInteger } = require('../util/index')
+import Crypto from 'crypto'
+import { cleanInteger } from '../util'
 
 // DATA IMPORT
-const latin = require('../data/256Latin.js')
-const { asUpper, asLower } = require('../data/letters.js')
+import latin from '../data/256Latin'
+import english from '../data/182English'
+import { Buffer } from "buffer";
+const { asUpper, asLower } = require('../data/letters')
 
 // INTERNAL
-function foundation(base) {
-	const byteCount = makeByteCount(base)
+function foundation(base: number): Promise<string> {
+	const byteCount: number = makeByteCount(base)
 	return promiseCryptoRBytes(byteCount)
-		.then(buf => buf.toString('hex'))
+		.then((buf: Buffer): string => buf.toString('hex'))
 }
 
-function numberFoundation(base) {
-	const trueBase = Math.abs(base)
+function numberFoundation(base: number): Promise<number> {
+	const trueBase: number = Math.abs(base)
 	return foundation(trueBase)
-		.then(hex => {
-			const val = parseInt(hex, 16)
+		.then((hex: string): number => {
+			const val: number = parseInt(hex, 16)
 			if (trueBase === 1) {
 				return val % 2
 			} else {
@@ -27,22 +27,25 @@ function numberFoundation(base) {
 		})
 }
 
-function stringFoundation(base) {
-	const trueBase = Math.abs(base)
+function stringFoundation(base: number): Promise<string> {
+	const trueBase: number = Math.abs(base)
 	return promiseCryptoRBytes(trueBase)
-		.then(buf => buf.toString('hex'))
+		.then((buf: Buffer): string => buf.toString('hex'))
 }
 
-function promiseCryptoRBytes(byteCount = 1) {
+function promiseCryptoRBytes(byteCount: number = 1): Promise<Buffer> {
 	return new Promise((resolve, reject) => {
 		Crypto.randomBytes(byteCount, (err, buf) => {
-			if (err) throw err
-			resolve(buf)
+			if (err) {
+				reject(err)
+			} else {
+				resolve(buf)
+			}
 		})
 	})
 }
 
-function makeByteCount(max) {
+function makeByteCount(max: number): number {
 	let ret = 1
 	let cycle = 256
 	while (max > cycle) {
@@ -53,7 +56,7 @@ function makeByteCount(max) {
 	return ret
 }
 
-async function randomLetter(count = 3, source) {
+async function randomLetter(count: number = 3, source: string): Promise<string> {
 	let ret = ''
 	for (let i = 0; i < count; i++) {
 		const index = await numberFoundation(25)
@@ -63,19 +66,20 @@ async function randomLetter(count = 3, source) {
 }
 
 // EXTERNAL
-function random(v = 1) {
+function random(v: number | string = 1): Promise<number> {
 	const pureV = cleanInteger(v, 1)
 	return numberFoundation(pureV)
 		.then(res => (pureV < 0 && res !== 0) ? res * -1 : res)
 }
-function coinFlip() {
+function coinFlip(): Promise<boolean> {
 	return random()
 		.then(num => num === 0)
 }
-function randomInRange(v1 = -100, v2 = 100) {
-	v1 = cleanInteger(v1, 1)
-	v2 = cleanInteger(v2, 1)
-	let high, low
+function randomInRange(v1: number | string = -100, v2: number | string = 100): Promise<number> {
+	v1 = cleanInteger(v1, -100)
+	v2 = cleanInteger(v2, 100)
+	let high: number = 0
+	let low: number = 0
 	if (v1 < v2) {
 		high = v2
 		low = v1
@@ -85,35 +89,39 @@ function randomInRange(v1 = -100, v2 = 100) {
 	} else {
 		return random(v2)
 	}
-	const baseValue = high - low
+	const baseValue: number = high - low
 	return numberFoundation(baseValue)
 		.then(res => (baseValue < 0) ? (res * -1) + low : res + low)
 }
 
-function randomAZString(len = 10, upper = true) {
+function randomAZString(len: number | string = 10, upper: boolean = true): Promise<string> {
+	len = cleanInteger(len, 10)
 	if (upper) {
 		return randomLetter(len, asUpper)
 	} else {
 		return randomLetter(len, asLower)
 	}
 }
-function randomString(len = 10) {
+function randomString(len: number | string = 10): Promise<string> {
+	len = cleanInteger(len, 10)
 	return stringFoundation(len)
-		.then(hex => hex.slice(0, len))
+		.then(hex => hex.slice(0, len as number))
 }
-function randomCaseString(len = 10) {
+function randomCaseString(len: number | string = 10): Promise<string> {
+	len = cleanInteger(len, 10)
 	return stringFoundation(len)
-		.then(hex => hex.slice(0, len))
+		.then(hex => hex.slice(0, len as number))
 		.then(async (str) => {
 			return Promise.all(str
 				.split('')
-				.map(async (char) => (await coinFlip()) ? char : char.toUpperCase())
+				.map(async (char: string) => (await coinFlip()) ? char : char.toUpperCase())
 			)
 		})
 		.then(strArr => strArr.join(''))
 }
 
-async function randomLatin(len = 5) {
+async function randomLatin(len: number | string = 5): Promise<string> {
+	len = cleanInteger(len, 5)
 	let ret = []
 	for (let i = 0; i < len; i++) {
 		const index = await numberFoundation(255)
@@ -122,7 +130,17 @@ async function randomLatin(len = 5) {
 	return ret.join(' ')
 }
 
-async function randomUUID() {
+async function randomEnglish(len: number | string = 5): Promise<string> {
+	len = cleanInteger(len, 5)
+	let ret = []
+	for (let i = 0; i < len; i++) {
+		const index = await numberFoundation(181)
+		ret.push(english[index])
+	}
+	return ret.join(' ')
+}
+
+async function randomUUID(): Promise<string> {
 	return stringFoundation(16)
 		.then(res => {
 			const byteTo4 = res.slice(12,14)
@@ -151,22 +169,22 @@ async function randomUUID() {
 
 // WRAPPERS
 
-function flexRange(v) {
+function flexRange(v: number | string): Promise<number> {
 	return random(v)
 }
-function setRange(v1,v2) {
+function setRange(v1: number | string, v2: number | string): Promise<number> {
 	return randomInRange(v1,v2)
 }
-function azString(len, upper) {
+function azString(len: number | string, upper: boolean): Promise<string> {
 	return randomAZString(len, upper)
 }
-function randomWords(len) {
+function randomWords(len: number | string): Promise<string> {
 	return randomLatin(len)
 }
 
 // EXPORT
 
-module.exports = {
+export {
 	// WRAPPERS
 	coinFlip,
 	flexRange,
@@ -180,5 +198,6 @@ module.exports = {
 	randomAZString,
 	randomCaseString,
 	randomLatin,
+	randomEnglish,
 	randomUUID
 }

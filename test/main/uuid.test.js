@@ -3,7 +3,7 @@
 const chai = require('chai');
 const { expect } = chai;
 chai.use(require('chai-uuid'));
-const { randomUUID } = require('../../libs');
+const { randomUUID } = require('../../src/libs');
 
 describe('randomUUID()', () => {
 	it(`should be a function`, ()=> {
