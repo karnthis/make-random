@@ -10,13 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- ## [Unreleased] -->
 
 ## Major Releases:
-### [v2.0.0] - 2022 02 22
+### [v3.0.0] - 2022 02 22
 #### Added
 - New random word generator:
 	- `randomEnglish()` Generates text block with specified number of random English words.
 #### Changed
 - Introducing Types! We have converted to Typescript, and it is good.
 - Added input sanitization to several functions that were missing it.
+
+### [v2.0.0] - 2022 02 22
+Skipped by accident
 
 ### [v1.0.0] - 2019 06 23
 #### Added
@@ -89,8 +92,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- LINKS -->
 <!-- RELEASES -->
-[Unreleased]: https://github.com/karnthis/make-random/compare/v2.0.0...dev
-[v2.0.0]: https://github.com/karnthis/make-random/compare/v1.3.0...2.0.0
+[Unreleased]: https://github.com/karnthis/make-random/compare/v3.0.0...dev
+[v3.0.0]: https://github.com/karnthis/make-random/compare/v1.3.0...3.0.0
 [v1.3.0]: https://github.com/karnthis/make-random/compare/v1.2.2...v1.3.0
 [v1.2.2]: https://github.com/karnthis/make-random/compare/v1.2.0...v1.2.2
 [v1.2.0]: https://github.com/karnthis/make-random/compare/v1.1.0...v1.2.0
