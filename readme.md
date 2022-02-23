@@ -25,6 +25,7 @@ npm install make-random
 - [randomString()](#randomString)
 - [randomCaseString()](#randomCaseString)
 - [randomLatin()](#randomLatin)
+- [randomEnglish()](#randomEnglish)
 - [randomUUID()](#randomUUID)
 
 __All ranges are inclusive of the passed value(s)__
@@ -194,6 +195,26 @@ randomLatin('20')
 .then(resp => console.log(resp))
 ```
 
+### randomEnglish()
+
+The `randomEnglish()` method accepts an optional integer or integer-like argument. It returns a string with the specified number of random latin words. If no argument is given, method defaults to 5 words. All words start with E or R.
+
+```javascript
+const { randomEnglish } = require('make-random')
+
+// Return string with 5 random words
+randomEnglish()
+.then(resp => console.log(resp))
+
+// Return string with 12 random words
+randomEnglish(12)
+.then(resp => console.log(resp))
+
+// Accept integer or integer-like string
+randomEnglish('20')
+.then(resp => console.log(resp))
+```
+
 ### randomUUID()
 
 The `randomUUID()` method generates v4-compliant CSPRNG UUID
@@ -207,19 +228,13 @@ randomUUID()
 .then(resp => console.log(resp))
 ```
 
-## Deprecated
-
-### Make-Random-Legacy
-
-The old methods `makeRandom.ceil()` and `makeRandom.floor()` have been discontined and removed. If continued use is needed and the new `random()` will not meet your needs, please switch to [make-random-legacy](https://github.com/karnthis/make-random-legacy) or consider submitting a feature request or PR.
-
 ## License
 
 The MIT License (MIT)
 
 Copyright (c) 2016 John Foderaro
 
-Copyright (c) 2019 Erin Rivas
+Copyright (c) 2019-2022 Erin Rivas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

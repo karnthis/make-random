@@ -1,7 +1,7 @@
 'use strict';
 
 const { expect } = require('chai');
-const { randomLatin } = require('../../src/libs');
+const { randomLatin } = require('../../dist/libs');
 
 describe('randomLatin()', () => {
 	it(`should be a function`, ()=> {
