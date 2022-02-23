@@ -7,7 +7,7 @@
 	"scripts": {
 		"build": "tsc && npm pack --pack-destination packs",
 		"patch": "tsc && npm version patch && npm publish",
-		"test": "mocha --recursive",
+		"test": "tsc && mocha --recursive",
 		"trial": "node ./attempt.js"
 	},
 	"repository": {
