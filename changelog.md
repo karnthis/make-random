@@ -39,6 +39,12 @@ Skipped by accident
 - Initial Release
 
 ## Minor Releases:
+### [v3.0.1] - 2022 05 v31
+#### Changed
+- `randomCaseString()` Added support for generating random values from a full 62 options instead of randomizing letters
+- Flagged internal functions so they should no longer appear in typescript intellisense
+
+
 ### [v1.3.0] - 2022 01 29
 #### Added
 - `flipCoin()` Generates a random boolean value
@@ -92,7 +98,8 @@ Skipped by accident
 
 <!-- LINKS -->
 <!-- RELEASES -->
-[Unreleased]: https://github.com/karnthis/make-random/compare/v3.0.0...dev
+[Unreleased]: https://github.com/karnthis/make-random/compare/v3.0.1...dev
+[v3.0.1]: https://github.com/karnthis/make-random/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/karnthis/make-random/compare/v1.3.0...3.0.0
 [v1.3.0]: https://github.com/karnthis/make-random/compare/v1.2.2...v1.3.0
 [v1.2.2]: https://github.com/karnthis/make-random/compare/v1.2.0...v1.2.2

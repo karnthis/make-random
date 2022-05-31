@@ -5,15 +5,18 @@ import { cleanInteger } from '../util'
 import latin from '../data/256Latin'
 import english from '../data/182English'
 import { Buffer } from "buffer";
+import {asLong} from "../data/letters";
 const { asUpper, asLower } = require('../data/letters')
 
 // INTERNAL
+/** @internal */
 function foundation(base: number): Promise<string> {
 	const byteCount: number = makeByteCount(base)
 	return promiseCryptoRBytes(byteCount)
 		.then((buf: Buffer): string => buf.toString('hex'))
 }
 
+/** @internal */
 function numberFoundation(base: number): Promise<number> {
 	const trueBase: number = Math.abs(base)
 	return foundation(trueBase)
@@ -27,12 +30,14 @@ function numberFoundation(base: number): Promise<number> {
 		})
 }
 
+/** @internal */
 function stringFoundation(base: number): Promise<string> {
 	const trueBase: number = Math.abs(base)
 	return promiseCryptoRBytes(trueBase)
 		.then((buf: Buffer): string => buf.toString('hex'))
 }
 
+/** @internal */
 function promiseCryptoRBytes(byteCount: number = 1): Promise<Buffer> {
 	return new Promise((resolve, reject) => {
 		Crypto.randomBytes(byteCount, (err, buf) => {
@@ -45,6 +50,7 @@ function promiseCryptoRBytes(byteCount: number = 1): Promise<Buffer> {
 	})
 }
 
+/** @internal */
 function makeByteCount(max: number): number {
 	let ret = 1
 	let cycle = 256
@@ -56,11 +62,22 @@ function makeByteCount(max: number): number {
 	return ret
 }
 
+/** @internal */
 async function randomLetter(count: number = 3, source: string): Promise<string> {
 	let ret = ''
 	for (let i = 0; i < count; i++) {
 		const index = await numberFoundation(25)
 		ret += source[index]
+	}
+	return ret
+}
+
+/** @internal */
+async function randomLongLetter(count: number = 3): Promise<string> {
+	let ret = ''
+	for (let i = 0; i < count; i++) {
+		const index = await numberFoundation(62)
+		ret += asLong[index]
 	}
 	return ret
 }
@@ -107,17 +124,21 @@ function randomString(len: number | string = 10): Promise<string> {
 	return stringFoundation(len)
 		.then(hex => hex.slice(0, len as number))
 }
-function randomCaseString(len: number | string = 10): Promise<string> {
+function randomCaseString(len: number | string = 10, mode: string): Promise<string> {
 	len = cleanInteger(len, 10)
-	return stringFoundation(len)
-		.then(hex => hex.slice(0, len as number))
-		.then(async (str) => {
-			return Promise.all(str
-				.split('')
-				.map(async (char: string) => (await coinFlip()) ? char : char.toUpperCase())
-			)
-		})
-		.then(strArr => strArr.join(''))
+	if (mode === 'mixed') {
+		return stringFoundation(len)
+			.then(hex => hex.slice(0, len as number))
+			.then(async (str) => {
+				return Promise.all(str
+					.split('')
+					.map(async (char: string) => (await coinFlip()) ? char : char.toUpperCase())
+				)
+			})
+			.then(strArr => strArr.join(''))
+	} else {
+		return randomLongLetter(len)
+	}
 }
 
 async function randomLatin(len: number | string = 5): Promise<string> {
