@@ -1,6 +1,6 @@
 {
 	"name": "make-random",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "Make a random value, powered by Crypto",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
