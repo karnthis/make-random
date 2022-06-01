@@ -124,7 +124,7 @@ function randomString(len: number | string = 10): Promise<string> {
 	return stringFoundation(len)
 		.then(hex => hex.slice(0, len as number))
 }
-function randomCaseString(len: number | string = 10, mode: string): Promise<string> {
+function randomCaseString(len: number | string = 10, mode?: string): Promise<string> {
 	len = cleanInteger(len, 10)
 	if (mode === 'mixed') {
 		return stringFoundation(len)
